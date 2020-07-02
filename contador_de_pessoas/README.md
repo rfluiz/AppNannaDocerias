@@ -1,6 +1,8 @@
 # contador_de_pessoas
 
-A new Flutter application.
+Primeiro projeto em Flutter.
+
+
 
 ## Getting Started
 
