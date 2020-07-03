@@ -39,18 +39,96 @@ class _HomeState extends State<Home> {
   final realController = TextEditingController();
   final dolarController = TextEditingController();
   final euroController = TextEditingController();
+  final libraController = TextEditingController();
+  final pesoController = TextEditingController();
+  final bitcoinController = TextEditingController();
 
   double dolar;
   double euro;
+  double libra;
+  double peso;
+  double bitcoin;
 
   void _realChanged(String text){
-
+      if(text.isEmpty) {
+        _clearAll();
+        return;
+      }
+      double real = double.parse(text);
+      dolarController.text = (real/dolar).toStringAsFixed(2);
+      euroController.text = (real/euro).toStringAsFixed(2);
+      libraController.text = (real/libra).toStringAsFixed(2);
+      pesoController.text =  (real/peso).toStringAsFixed(2);
+      bitcoinController.text= (real/bitcoin).toStringAsFixed(2);
   }
   void _dolarChanged(String text){
-
+      if(text.isEmpty) {
+        _clearAll();
+        return;
+      }
+      double dolar = double.parse(text);
+      realController.text = (dolar * this.dolar).toStringAsFixed(2);
+      euroController.text = (dolar * this.dolar/euro).toStringAsFixed(2);
+      libraController.text = (dolar * this.dolar/libra).toStringAsFixed(2);
+      pesoController.text = (dolar * this.dolar/peso).toStringAsFixed(2);
+      bitcoinController.text = (dolar * this.dolar/bitcoin).toStringAsFixed(2);
   }
   void _euroChanged(String text){
+      if(text.isEmpty) {
+        _clearAll();
+        return;
+      }
+      double euro = double.parse(text);
+      realController.text = (euro * this.euro).toStringAsFixed(2);
+      dolarController.text = (euro * this.euro/dolar).toStringAsFixed(2);
+      libraController.text = (euro * this.euro/libra).toStringAsFixed(2);
+      pesoController.text = (euro * this.euro/peso).toStringAsFixed(2);
+      bitcoinController.text = (euro * this.euro/bitcoin).toStringAsFixed(2);
+  }
+  void _libraChanged(String text){
+    if(text.isEmpty) {
+      _clearAll();
+      return;
+    }
+    double libra = double.parse(text);
+    realController.text = (libra * this.libra).toStringAsFixed(2);
+    dolarController.text = (libra * this.libra/dolar).toStringAsFixed(2);
+    euroController.text = (libra * this.libra/euro).toStringAsFixed(2);
+    pesoController.text = (libra * this.libra/peso).toStringAsFixed(2);
+    bitcoinController.text = (libra * this.libra/bitcoin).toStringAsFixed(2);
+  }
+  void _pesoChanged(String text){
+    if(text.isEmpty) {
+      _clearAll();
+      return;
+    }
+    double peso = double.parse(text);
+    realController.text = (peso * this.peso).toStringAsFixed(2);
+    dolarController.text = (peso * this.peso/dolar).toStringAsFixed(2);
+    euroController.text = (peso * this.peso/euro).toStringAsFixed(2);
+    libraController.text = (peso * this.peso/libra).toStringAsFixed(2);
+    bitcoinController.text = (peso * this.peso/bitcoin).toStringAsFixed(2);
+  }
+  void _bitcoinChanged(String text){
+    if(text.isEmpty) {
+      _clearAll();
+      return;
+    }
+    double bitcoin = double.parse(text);
+    realController.text = (bitcoin * this.bitcoin).toStringAsFixed(2);
+    dolarController.text = (bitcoin * this.bitcoin/dolar).toStringAsFixed(2);
+    euroController.text = (bitcoin * this.bitcoin/euro).toStringAsFixed(2);
+    libraController.text = (bitcoin * this.bitcoin/libra).toStringAsFixed(2);
+    pesoController.text = (bitcoin * this.bitcoin/peso).toStringAsFixed(2);
+  }
 
+  void _clearAll(){
+    realController.text = "";
+    dolarController.text = "";
+    euroController.text = "";
+    libraController.text = "";
+    pesoController.text = "";
+    bitcoinController.text = "";
   }
 
   @override
@@ -84,7 +162,10 @@ class _HomeState extends State<Home> {
                 );
               }else{
                 dolar = snapshot.data["results"]["currencies"]["USD"]["buy"];
-                euro = dolar = snapshot.data["results"]["currencies"]["EUR"]["buy"];
+                euro = snapshot.data["results"]["currencies"]["EUR"]["buy"];
+                libra = snapshot.data["results"]["currencies"]["GBP"]["buy"];
+                peso = snapshot.data["results"]["currencies"]["ARS"]["buy"];
+                bitcoin = snapshot.data["results"]["currencies"]["BTC"]["buy"];
 
                 return SingleChildScrollView(
                   padding: EdgeInsets.all(20.0),
@@ -97,6 +178,12 @@ class _HomeState extends State<Home> {
                       buildTextField("Dólares", "US\$", dolarController, _dolarChanged),
                       Divider(),
                       buildTextField("Euros", "€", euroController, _euroChanged),
+                      Divider(),
+                      buildTextField("Libras", "£", libraController, _libraChanged),
+                      Divider(),
+                      buildTextField("Pesos", "AR\$", pesoController, _pesoChanged),
+                      Divider(),
+                      buildTextField("Bitcoin", "₿", bitcoinController, _bitcoinChanged),
                     ],
                   ),
                 );
