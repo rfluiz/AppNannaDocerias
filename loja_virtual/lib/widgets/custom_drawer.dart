@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loja_virtual/tiles/drawer_tile.dart';
 
 class CustomDrawer extends StatelessWidget {
   @override
@@ -33,13 +34,49 @@ class CustomDrawer extends StatelessWidget {
                     Positioned(
                       top: 8.0,
                       left: 0.0,
-                      child: Text("Bazante Doces",
-                      style: TextStyle(fontSize: 34.0, fontWeight: FontWeight.bold),
+                      child: Text("Bazante\nDoces • Salgados",
+                      style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold
+                      ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 0.0,
+                      bottom: 0.0,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text("Olá,", style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                            fontSize: 18.0,
+                            fontWeight: FontWeight.bold
+                          ),
+                          ),
+                         GestureDetector(
+                           child:  Text("Entre ou Cadastre-se >", style: TextStyle(
+                               color: Color.fromARGB(255, 134, 63, 77),
+                               fontSize: 16.0,
+                               fontWeight: FontWeight.bold
+                           ),
+                           ),
+                           onTap: (){
+
+                           },
+                         )
+                        ],
                       ),
                     )
                   ],
                 ),
-              )
+              ),
+              Divider(),
+              DrawerTile(Icons.home, "Início"),
+              DrawerTile(Icons.list, "Produtos"),
+              DrawerTile(Icons.location_on, "Lojas"),
+              DrawerTile(Icons.playlist_add_check, "Meus Pedidos"),
+
             ],
           )
         ],
