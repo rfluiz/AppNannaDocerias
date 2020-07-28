@@ -118,7 +118,7 @@ class _ProductScreenState extends State<ProductScreen> {
                   height: 44.0,
                   child: RaisedButton(
                     onPressed: size != null ? (){
-                      
+
                     }:null,
                     child: Text(
                       "Adicionar ao Carrinho",
