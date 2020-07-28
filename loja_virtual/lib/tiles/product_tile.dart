@@ -35,6 +35,7 @@ class ProductTile extends StatelessWidget {
                 Expanded(
                   child: Container(
                     padding: EdgeInsets.all(1.0),
+                    margin: EdgeInsets.only(top: 5.0),
                     child: Column(
                       children: <Widget>[
                         Text(product.title,
