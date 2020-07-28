@@ -69,7 +69,7 @@ class _ProductScreenState extends State<ProductScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 16.0,
+                  height: 10.0,
                 ),
                 Text(
                   "Tamanho",
@@ -109,6 +109,39 @@ class _ProductScreenState extends State<ProductScreen> {
                         ),
                       );
                     }).toList(),
+                  ),
+                ),
+                SizedBox(
+                  height: 10.0,
+                ),
+                SizedBox(
+                  height: 44.0,
+                  child: RaisedButton(
+                    onPressed: size != null ? (){
+                      
+                    }:null,
+                    child: Text(
+                      "Adicionar ao Carrinho",
+                      style: TextStyle(fontSize: 18.0),
+                    ),
+                    color: primaryColor,
+                    textColor: Colors.white,
+                  ),
+                ),
+                SizedBox(
+                  height: 14.0,
+                ),
+                Text(
+                  "Descrição",
+                  style: TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w500
+                  )
+                ),
+                Text(
+                  product.description,
+                  style: TextStyle(
+                    fontSize: 16.0
                   ),
                 )
               ],
