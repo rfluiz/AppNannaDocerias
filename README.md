@@ -7,3 +7,4 @@
 ### 5º Projeto - Buscador de Gifs    [OK]
 ### 6º Projeto - Agenda de Contatos  [OK]
 ### 7º Projeto - Chat                [OK]
+### 8º Projeto - Loja Virtual        [OK]
