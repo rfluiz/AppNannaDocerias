@@ -79,7 +79,7 @@ class CartPrice extends StatelessWidget {
                     "Finalizar Pedido"),
                   textColor: Colors.white,
                   color: Theme.of(context).primaryColor,
-                  onPressed: (){},
+                  onPressed: buy,
                 )
               ],
             );
